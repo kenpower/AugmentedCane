@@ -40,7 +40,7 @@ def init_lidar():
     global lidar
     global iterator
     try:
-        lidar = RPLidar(None, PORT_NAME)
+        lidar = RPLidar(None)
         iterator = lidar.iter_scans(max_buf_meas=120)
     except RPLidarException as e:
         print("lidar exception: ", e)
