@@ -49,6 +49,8 @@ def init_lidar():
         init_lidar()
 
 
+init_lidar()
+
 # intialize serial and rplidar
 PORT_NAME = '/dev/ttyUSB0'
 run_flag = True # starts the program, keeps it running
