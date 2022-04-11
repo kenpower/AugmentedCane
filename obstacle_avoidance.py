@@ -3,7 +3,7 @@
 
 #!/usr/bin/env python3
 # to run on raspberry pi use, add sudo if run into issues with serial: python3 assist_cane_hallway_test.py
-from rplidar import RPLidar
+from rplidar import RPLidar, RPLidarException
 import RPi.GPIO as IO
 import numpy as np
 import time
