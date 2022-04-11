@@ -103,8 +103,11 @@ else:
     engage_sweep = False
 
 # defining imu setup and constants
-i2c = busio.I2C(board.SCL, board.SDA)
-fxos = adafruit_fxos8700.FXOS8700(i2c)
+#TODO KP uncomment 2 lines below when using imu
+# i2c = busio.I2C(board.SCL, board.SDA)
+# fxos = adafruit_fxos8700.FXOS8700(i2c)
+
+
 # fxas = adafruit_fxas21002c.FXAS21002C(i2c)
 dec_angle = -13.0 # update based on month (or use gps info)!
 d2r = 3.14159/180.0 # degrees to radians
@@ -148,7 +151,9 @@ while(run_flag):
     ### Continually run code for hallway tracking
     while(button_state): # run until reset button pushed
         ## UPDATE CUR_YAW WITH IMU
-        cur_yaw = cf.readCompass(dec_angle, offset_vec, scale_vec, fxos.magnetometer, r2d)
+        #TODO KP uncomment 1 lines below when using imu
+        # cur_yaw = cf.readCompass(dec_angle, offset_vec, scale_vec, fxos.magnetometer, r2d)
+
         ## READ AND UPDATE LIDAR
         lidar_scan = next(iterator)
         distances = cf.compute_lidar_array(lidar_scan, lidar_ang_arr, distances)
