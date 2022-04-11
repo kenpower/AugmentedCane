@@ -31,12 +31,30 @@ def exit_function(signal, frame):
 # intialize exit function
 signal.signal(signal.SIGINT, exit_function)
 
+
+lidar = None
+iterator = None
+
+
+def init_lidar():
+    global lidar
+    global iterator
+    try:
+        lidar = RPLidar(None, PORT_NAME)
+        iterator = lidar.iter_scans(max_buf_meas=120)
+    except RPLidarException as e:
+        print("lidar exception: ", e)
+        lidar.stop()
+        lidar.disconnect()
+        init_lidar()
+
+
 # intialize serial and rplidar
 PORT_NAME = '/dev/ttyUSB0'
 run_flag = True # starts the program, keeps it running
 time.sleep(.5) # rest to start serial
-lidar = RPLidar(PORT_NAME)
-iterator = lidar.iter_scans(max_buf_meas=120)
+#lidar = RPLidar(PORT_NAME)
+#iterator = lidar.iter_scans(max_buf_meas=120)
 time.sleep(.5) # pause to start lidar scanning
 
 # distance and lidar thresholds
