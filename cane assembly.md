@@ -14,6 +14,10 @@ select the microSD card as the drive to install to, and click “Flash!”.
 Once this has completed, you can eject the microSD card and insert it into the Raspberry Pi. 
 You have finished installing the software and are ready to assemble the hardware.
 
+Due to a [bug](https://github.com/SkoltechRobotics/rplidar/issues/36#issuecomment-787668203) in the Lidar software, install 
+
+`$ sudo pip3 install rplidar-roboticia` 
+
 ## Building thehardware:
 
 1.To connect the camera to the Raspberry Pi, please see the Raspberry Pi Foundationinstructions: 
@@ -29,13 +33,16 @@ To see an example of hot the protohat can be used with the Raspberry Pi, check o
 
 4.To connect the IMU breakout boardyou will need tosolder the VIN, GND, SCL, SDA pins on the IMU board to the 5V, GND, SCL, SDA pins on the Adafruit protohat.
 
-5.The motor controller should be soldered following these instructions: 
+5. DO NOT CONNECT THE Vm & GND from the motor controller to the arduinio
+The motor controller should be soldered following these instructions: 
 https://learn.adafruit.com/adafruit-drv8871-brushed-dc-motor-driver-breakout/a.
 Please note that the power for the motor will be supplied from the LiPo battery on the bill of materials. 
 DO NOT DIRECTLY SOLDER THE BATTERY TO THE POWER PINS. Solder a connector to the power pins so the battery can be disconnected.
 
 6.The pushbutton used to turn off the motor during operation (option for use) should have one end soldered to the #18 pin on the Adafruit 
-protohatand the other pin soldered to 3.3V.7.The Raspberry Pi will be powered by therechargeable batteryconnected into the RaspberryPi USB-C port. 
+protohatand the other pin soldered to 3.3V.
+
+7.The Raspberry Pi will be powered by the rechargeable batteryconnected into the RaspberryPi USB-C port. 
 
 8.The Raspberry Pi should be protected with the provided casein the bill of materials. 
 The cobbler breakout allows the Adafruit protohat board to be attached to the Raspberry Pi while it is in the case. 
